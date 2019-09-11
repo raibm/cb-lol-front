@@ -9,10 +9,9 @@
     z-index: -1;
   }
 
-  #navBar {
+  #navBar{
       z-index: 2;
       color: black;
-
   }
 
   a#btnRedeSocial{
@@ -52,9 +51,6 @@
       color: aquamarine;
   }
 
-  input{
-  background-color: blueviolet
-  }
   button#btnEntrar{
     margin-left: 130px;
   }
@@ -62,4 +58,9 @@
  b#info{
       color: aquamarine;
       font-size: 15px
+  }
+
+  ::ng-deep .navCss nav
+  {
+        background-color: rgba(0, 0, 0, 0.7)!important;
   }
