@@ -1,43 +1,80 @@
 <header class="h-100">
     <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark black" [containerInside]="true" id="navBar">
         <mdb-navbar-brand>
-            <button mdbBtn type="button" gradient="peach" size="lg" mdbWavesEffect>COMPUILDER</button>
+            <button mdbBtn type="button" gradient="sunny-morning" size="lg" mdbWavesEffect>COMPUILDER</button>
         </mdb-navbar-brand>
-        <links>
+        <ul class="navbar-nav mr-auto" id="rightItems">
+            <li class="nav-item waves-light">
+                <a mdbBtn floating="true" size="lg" gradient="sunny-morning" mdbWavesEffect style="float:right;"
+                    id="btnRedeSocial">
+                    <i class="fab fa-github"></i></a>
+            </li>
+            <li class="nav-item waves-light">
+            <a mdbBtn floating="true" size="lg" gradient="sunny-morning" mdbWavesEffect style="float:right;"
+                id="btnRedeSocial">
+                <i class="fab fa-linkedin"></i></a>
+            </li>
+        </ul>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item waves-light" mdbWavesEffect>
-                    <button mdbBtn type="button" gradient="peach" rounded="true" mdbWavesEffect>COMPS</button>
-
-                </li>
-                <li class="nav-item waves-light" mdbWavesEffect>
-                    <button mdbBtn type="button" gradient="peach" rounded="true" mdbWavesEffect>SOBRE</button>
+                    <button mdbBtn type="button" gradient="sunny-morning" rounded="true" mdbWavesEffect>SOBRE</button>
                 </li>
             </ul>
-        </links>
-        <ul class="navbar-nav mr-auto ">
-        <a mdbBtn floating="true" size="lg" gradient="purple" mdbWavesEffect style="float:right;" id="btnRedeSocial">
-            <i class="fab fa-github"></i></a>
-        <a mdbBtn floating="true" size="lg" gradient="purple" mdbWavesEffect style="float:right;" id="btnRedeSocial">
-            <i class="fab fa-linkedin"></i></a>
-        </ul>
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+       
     </mdb-navbar>
 
 </header>
 <main>
+    <div class="container" id="login">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Login</h3>
+                    <div class="d-flex justify-content-end social_icon">
+                        <span><i class="fab fa-facebook-square"></i></span>
+                        <span><i class="fab fa-google-plus-square"></i></span>
+                        <span><i class="fab fa-twitter-square"></i></span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="username">
+                            
+                        </div>
+                        <div class="input-group form-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-key"></i></span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="password">
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" value="Entrar" class="btn float-right login_btn">
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <div class="d-flex justify-content-center links">
+                        Não é um invocador?<a href="#">Cadastre-se</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <div class="container">
         <video id="teste" autoplay muted loop="true">
             <source src="../assets/Odiseia.mp4" type="video/mp4">
         </video>
     </div>
-    <div class="container">
-            <footer><a>&copy; Copyright 2019 Rai Bizerra Maciel</a></footer>
 
-</div>
+    <div class="container">
+        <footer><a>&copy; Copyright 2019 Rai Bizerra Maciel</a></footer>
+
+    </div>
 
 
 </main>
-
