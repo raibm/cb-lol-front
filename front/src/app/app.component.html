@@ -2,7 +2,7 @@
     <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark black" [containerInside]="true" id="navBar">
         <mdb-navbar-brand>
             <button mdbBtn type="button" gradient="peach" size="lg" mdbWavesEffect>COMPUILDER</button>
-          </mdb-navbar-brand>
+        </mdb-navbar-brand>
         <links>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item waves-light" mdbWavesEffect>
@@ -11,23 +11,33 @@
                 </li>
                 <li class="nav-item waves-light" mdbWavesEffect>
                     <button mdbBtn type="button" gradient="peach" rounded="true" mdbWavesEffect>SOBRE</button>
-                  </li>
+                </li>
             </ul>
         </links>
-        <a mdbBtn floating="true" size="lg" gradient="purple" mdbWavesEffect>
+        <ul class="navbar-nav mr-auto ">
+        <a mdbBtn floating="true" size="lg" gradient="purple" mdbWavesEffect style="float:right;" id="btnRedeSocial">
             <i class="fab fa-github"></i></a>
-            <a mdbBtn floating="true" size="lg" gradient="purple" mdbWavesEffect>
-                <i class="fab fa-linkedin"></i></a>
-
+        <a mdbBtn floating="true" size="lg" gradient="purple" mdbWavesEffect style="float:right;" id="btnRedeSocial">
+            <i class="fab fa-linkedin"></i></a>
+        </ul>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navBar" aria-controls="navBar" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
     </mdb-navbar>
-    
+
 </header>
-  <main>
+<main>
 
     <div class="container">
-            <video id="teste" autoplay muted loop="true">
-                <source src="../assets/Odiseia.mp4" type="video/mp4">
-            </video>
+        <video id="teste" autoplay muted loop="true">
+            <source src="../assets/Odiseia.mp4" type="video/mp4">
+        </video>
     </div>
+    <div class="container">
+            <footer><a>&copy; Copyright 2019 Rai Bizerra Maciel</a></footer>
 
-  </main>
+</div>
+
+
+</main>
+
