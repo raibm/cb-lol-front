@@ -6,21 +6,21 @@
         <ul class="navbar-nav mr-auto" id="rightItems">
             <li class="nav-item waves-light">
                 <a mdbBtn floating="true" size="lg" gradient="sunny-morning" mdbWavesEffect style="float:right;"
-                    id="btnRedeSocial">
+                    id="btnRedeSocial" href="https://github.com/raibm">
                     <i class="fab fa-github"></i></a>
             </li>
             <li class="nav-item waves-light">
-            <a mdbBtn floating="true" size="lg" gradient="sunny-morning" mdbWavesEffect style="float:right;"
-                id="btnRedeSocial">
-                <i class="fab fa-linkedin"></i></a>
+                <a mdbBtn floating="true" size="lg" gradient="sunny-morning" mdbWavesEffect style="float:right;"
+                    id="btnRedeSocial" href="https://www.linkedin.com/in/rai-bizerra-maciel-6b4552155/">
+                    <i class="fab fa-linkedin"></i></a>
             </li>
         </ul>
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item waves-light" mdbWavesEffect>
-                    <button mdbBtn type="button" gradient="sunny-morning" rounded="true" mdbWavesEffect>SOBRE</button>
-                </li>
-            </ul>
-       
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <button mdbBtn type="button" gradient="sunny-morning" rounded="true" mdbWavesEffect>SOBRE</button>
+            </li>
+        </ul>
+
     </mdb-navbar>
 
 </header>
@@ -38,28 +38,23 @@
                 </div>
                 <div class="card-body">
                     <form>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="username">
-                            
+                        <div class="md-form md-bg">
+                            <input type="text" id="formBg1" class="form-control" mdbInput>
+                            <label for="formBg1">Usuario</label>
                         </div>
-                        <div class="input-group form-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text"><i class="fas fa-key"></i></span>
-                            </div>
-                            <input type="password" class="form-control" placeholder="password">
+                        <div class="md-form md-bg">
+                            <input type="text" id="formBg1" class="form-control" mdbInput type="password">
+                            <label for="formBg1">Senha</label>
                         </div>
                         <div class="form-group">
-                            <input type="submit" value="Entrar" class="btn float-right login_btn">
+                            <button mdbBtn type="button" gradient="sunny-morning" rounded="true" mdbWavesEffect
+                                id="btnEntrar">Entrar</button>
                         </div>
                     </form>
                 </div>
                 <div class="card-footer">
-                    <div class="d-flex justify-content-center links">
-                        Não é um invocador?<a href="#">Cadastre-se</a>
-                    </div>
+                    <b id="info">Não é um invocador?</b>
+                    <a href="#" id="cadastro">&nbsp; Cadastre-se</a>
                 </div>
             </div>
         </div>
