@@ -1,8 +1,8 @@
-<div class="container" id="login">
+<div *ngIf="visualizarLogin" class="container" id="login">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
-                    <h3>Cadastro</h3>
+                    <h3>Login</h3>
                     <div class="d-flex justify-content-end social_icon">
                         <span><i class="fab fa-facebook-square"></i></span>
                         <span><i class="fab fa-google-plus-square"></i></span>
@@ -19,16 +19,19 @@
                             <input type="text" id="formBg1" class="form-control" mdbInput type="password">
                             <label for="formBg1">Senha</label>
                         </div>
-
                         <div class="form-group">
                             <button mdbBtn type="button" gradient="sunny-morning" rounded="true" mdbWavesEffect
-                                id="btnEntrar" class="animated bounce">CADASTRAR</button>
+                                id="btnEntrar" class="animated bounce">Entrar</button>
                         </div>
                     </form>
+                </div>
+                <div class="card-footer">
+                    <b id="info">Não é um invocador?</b>
+                    <a href="#" id="cadastro" (click)="navegarCadastro()">&nbsp; Cadastre-se</a>
                 </div>
             </div>
         </div>
     </div>
     <div *ngIf="navegar">
-        <app-login></app-login>
+        <app-cadastro></app-cadastro>
     </div>
