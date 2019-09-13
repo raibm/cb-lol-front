@@ -1,5 +1,5 @@
-div#login{
-    margin-top: 200px;
+div#cadastro{
+    margin-top: 150px;
 }
 
 div.card{
@@ -14,15 +14,78 @@ a#cadastro{
     color: darkgoldenrod
 }
 
+p{
+    color: rgb(230, 173, 31);
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
 div.card-header h3{
     color: aquamarine;
 }
 
-button#btnEntrar{
-  margin-left: 130px;
+button#btnPronto{
+  margin-left: 220px;
 }
 
 b#info{
     color: aquamarine;
     font-size: 15px
 }
+  
+  .wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .botaoVoltar {
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-left: 170px;
+    }
+  
+  .botaoVoltar:hover {
+    background-color: #2EE59D;
+    box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+
+  .botaoValidar {
+    width: 140px;
+    height: 45px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    color: #000;
+    background-color: #fff;
+    border: none;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+    margin-left: 15px;
+    }
+  
+  .botaoValidar:hover {
+    background-color: rgb(213, 248, 12);
+    box-shadow: 0px 15px 20px rgba(243, 133, 7, 0.4);
+    color: #fff;
+    transform: translateY(-7px);
+  }
+    

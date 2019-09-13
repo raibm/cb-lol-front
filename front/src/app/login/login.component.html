@@ -1,4 +1,4 @@
-<div *ngIf="visualizarLogin" class="container" id="login">
+<div class="container" id="login">
         <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
@@ -27,11 +27,13 @@
                 </div>
                 <div class="card-footer">
                     <b id="info">Não é um invocador?</b>
-                    <a href="#" id="cadastro" (click)="navegarCadastro()">&nbsp; Cadastre-se</a>
+                    <a id="cadastro" (click)="navegarCadastro()">&nbsp; Cadastre-se</a>
                 </div>
             </div>
         </div>
     </div>
-    <div *ngIf="navegar">
-        <app-cadastro></app-cadastro>
+    <div fxLayout="row" fxFlex="100">
+        <div class="content" fxLayout="column" fxFlex>
+            <router-outlet></router-outlet>
+        </div>
     </div>

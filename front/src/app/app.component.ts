@@ -8,16 +8,19 @@ import { Router } from '@angular/router';
 })
 export class AppComponent implements OnInit {
   title = 'mdb-angular-free';
-  
+  logado: boolean = false;
+
   constructor(private route: Router){}
 
   ngOnInit(){
+    this.route.navigate(['login']);
   }
 
   navegarParaCadastro(){
-    console.log("oi");
-    this.route.navigate((['cadastro']));
+    this.route.navigate(['cadastro']);
   }
+
+  
 
 }
 

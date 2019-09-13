@@ -20,20 +20,18 @@
                 <button mdbBtn type="button" gradient="sunny-morning" rounded="true" mdbWavesEffect>SOBRE</button>
             </li>
         </ul>
-
     </mdb-navbar>
-</header>
-
-<main>
-    <app-login></app-login>
     <div class="container">
-        <video id="teste" autoplay muted loop="true">
+        <video id="video" autoplay muted loop="true">
             <source src="../assets/Odiseia.mp4" type="video/mp4">
         </video>
     </div>
     <div class="container">
         <footer><a>&copy; Copyright 2019 Rai Bizerra Maciel</a></footer>
     </div>
-</main>
-
-
+</header>
+<div fxLayout="row" fxFlex="100">
+    <div class="content" fxLayout="column" fxFlex>
+        <router-outlet></router-outlet>
+    </div>
+</div>
