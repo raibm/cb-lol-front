@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BlockUI, NgBlockUI } from 'ng-block-ui';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +9,14 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   constructor(private route: Router) { }
+  @BlockUI() blockUI: NgBlockUI;
 
   ngOnInit() {
+    this.blockUI.stop();
   }
 
   navegarCadastro(){
+    this.blockUI.start("Carregando...")
     this.route.navigate(['cadastro']);
   }
 
