@@ -20,7 +20,9 @@ export class AppComponent implements OnInit {
     this.route.navigate(['cadastro']);
   }
 
-  
+  navegarParaSobre(){
+    this.route.navigate(['sobre']);
+  }
 
 }
 

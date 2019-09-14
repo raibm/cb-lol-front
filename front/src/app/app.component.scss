@@ -7,8 +7,9 @@
   width: auto;
   height: auto;
   z-index: -5;
-  background-repeat: repeat-x;
   opacity: 1;
+  background-repeat:repeat;
+  position: fixed;
 }
 
 #navBar {
@@ -27,6 +28,7 @@ footer a {
   position: absolute;
   bottom: 0;
   right: 50px;
+  position: fixed;
 }
 
 ul#rightItems {

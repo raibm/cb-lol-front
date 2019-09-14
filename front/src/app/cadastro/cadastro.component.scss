@@ -1,5 +1,5 @@
 div#cadastro{
-    margin-top: 150px;
+    margin-top: 100px;
 }
 
 div.card{
@@ -81,4 +81,37 @@ b#info{
     color: rgb(0, 0, 0);
     transform: translateY(-7px);
   }
-    
+
+  //Modal de avatares 
+  
+  .fuller-button {
+    color: rgba(255, 255, 255, 1);
+    background: none;
+    border-radius: 0;
+    padding: 1.2em 5em;
+    letter-spacing: 0.35em;
+    font-size: 0.7em;
+    transition: background-color 0.3s, box-shadow 0.3s, color 0.3s;
+    margin: 1em;
+  
+    &.blue {
+      box-shadow: inset 0 0 1em rgba(0, 170, 170, 0.5), 0 0 1em rgba(0, 170, 170, 0.5);
+      border: rgba(0, 221, 221, 0.486) solid 2px;
+      background-color: rgba(0, 170, 170, 0) !important;
+    }
+  
+    &.blue:hover {
+      background-color: #0dd;
+      box-shadow: inset 0 0 0 rgba(0, 170, 170, 0.5), 0 0 1.5em rgba(0, 170, 170, 0.7);
+    }
+  }
+  
+  //galeria
+  .row {
+    margin: 15px;
+  }
+
+  .modal-content{
+    margin-top: 200px;
+    background-color: rgba(14, 9, 5, 0.6);
+  }

@@ -11,13 +11,15 @@ import { LoginComponent } from './login/login.component';
 import { PerfilComponent } from './perfil/perfil.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BlockUIModule } from 'ng-block-ui';
+import { SobreComponent } from './sobre/sobre.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CadastroComponent,
     LoginComponent,
-    PerfilComponent
+    PerfilComponent,
+    SobreComponent,
   ],
   imports: [
     BrowserModule,

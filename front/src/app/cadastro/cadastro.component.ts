@@ -21,5 +21,4 @@ export class CadastroComponent implements OnInit {
     this.route.navigate(['login']);
     this.blockUI.start("Carregando...")
   }
-
 }
