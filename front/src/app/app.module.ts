@@ -12,6 +12,7 @@ import { PerfilComponent } from './perfil/perfil.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BlockUIModule } from 'ng-block-ui';
 import { SobreComponent } from './sobre/sobre.component';
+import { PrincipalComponent } from './principal/principal.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { SobreComponent } from './sobre/sobre.component';
     LoginComponent,
     PerfilComponent,
     SobreComponent,
+    PrincipalComponent,
   ],
   imports: [
     BrowserModule,

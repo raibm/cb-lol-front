@@ -24,6 +24,10 @@ export class AppComponent implements OnInit {
     this.route.navigate(['sobre']);
   }
 
+  navegarParaPrincipal(){
+    this.route.navigate(['principal']);
+  }
+
 }
 
 
