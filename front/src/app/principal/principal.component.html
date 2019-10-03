@@ -21,11 +21,11 @@
 
             <tbody *ngFor="let comp of composicoes">
               <tr>
-                <th scope="row">3</th>
+                <td><img class="avatarCriadorComp" src="{{comp.imgCapa}}"></td>
                 <td>{{comp.autor}}</td>
                 <td>{{comp.titulo}}</td>
                 <td>
-                  <button mdbBtn color="primary" outline="true" size="sm" mdbWavesEffect type="button" class="m-0">Button</button>
+                  <mdb-icon fas icon="eye" (click)="teste(comp)"></mdb-icon>
                 </td>
               </tr>
             </tbody>
