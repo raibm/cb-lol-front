@@ -108,7 +108,7 @@ div#geral {
 .modal-content {
   height: 850px;
   width: 1800px;
-  right: 630px;
+  right: 650px;
   background-color: rgba(14, 9, 5, 0.9);
   overflow-y: scroll;
 }
@@ -154,6 +154,7 @@ img {
   max-height: 250px;
   width: auto;
   height: auto;
+  border-color: #e98819;
 }
 
 img#rotas{
@@ -161,3 +162,8 @@ img#rotas{
   max-height: 50px;
   margin-left: 60px
 }
+
+::-webkit-scrollbar {
+  width: 0px;
+}
+
