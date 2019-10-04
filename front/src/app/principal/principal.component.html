@@ -5,84 +5,113 @@
         <h1>Composições</h1>
       </header>
       <div id="botoes">
-          <button  class="pure-button fuller-button yellow" (click)="navegarParaSobre()">
-              SUAS COMPS <mdb-icon fas icon="list-ul"></mdb-icon>
-          </button>
-          <button class="pure-button fuller-button yellow" (click)="navegarParaSobre()">
-              NOVA COMP <mdb-icon fas icon="users"></mdb-icon>
-          </button>
+        <button class="pure-button fuller-button yellow">
+          SUAS COMPS <mdb-icon fas icon="list-ul"></mdb-icon>
+        </button>
+        <button class="pure-button fuller-button yellow" (click)="frame.show()">
+          NOVA COMP <mdb-icon fas icon="users"></mdb-icon>
+        </button>
+
       </div>
     </div>
     <div id="geral" class="col-md-6">
-        <header>
-            <h1 id="sub">Geral</h1>
-          </header> 
-           <table class="table table-striped table-responsive-md btn-table">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Criador</th>
-                <th>Titulo</th>
-                <th>opções</th>
-              </tr>
-            </thead>
+      <header>
+        <h1 id="sub">Geral</h1>
+      </header>
+      <table class="table table-striped table-responsive-md btn-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Criador</th>
+            <th>Titulo</th>
+            <th>opções</th>
+          </tr>
+        </thead>
 
-            <tbody *ngFor="let comp of composicoes">
-              <tr>
-                <td><img style="height: 20px; width: 20px;" src="{{comp.imgCapa}}"></td>
-                <td>{{comp.autor}}</td>
-                <td>{{comp.titulo}}</td>
-                <td>
-                  <mdb-icon fas icon="eye" (click)="teste(comp)"></mdb-icon>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        <tbody *ngFor="let comp of composicoes">
+          <tr>
+            <td><img style="height: 20px; width: 20px;" src="{{comp.imgCapa}}"></td>
+            <td>{{comp.autor}}</td>
+            <td>{{comp.titulo}}</td>
+            <td>
+              <mdb-icon fas icon="eye" (click)="teste(comp)"></mdb-icon>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <div id="maisVotadas" class="col-md-6">
-        <header>
-            <h1 id="sub">Mais votadas</h1>
-          </header>
-     <table class="table table-striped table-responsive-md btn-table">
+      <header>
+        <h1 id="sub">Mais votadas</h1>
+      </header>
+      <table class="table table-striped table-responsive-md btn-table">
 
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
-              </tr>
-            </thead>
-          
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>
-                  <button mdbBtn color="primary" outline="true" size="sm" mdbWavesEffect type="button" class="m-0">Button</button>
-                </td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>
-                  <button mdbBtn color="primary" outline="true" size="sm" mdbWavesEffect type="button" class="m-0">Button</button>
-                </td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>
-                  <button mdbBtn color="primary" outline="true" size="sm" mdbWavesEffect type="button" class="m-0">Button</button>
-                </td>
-              </tr>
-            </tbody>
-          
-          </table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Username</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>
+              <button mdbBtn color="primary" outline="true" size="sm" mdbWavesEffect type="button"
+                class="m-0">Button</button>
+            </td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>Jacob</td>
+            <td>
+              <button mdbBtn color="primary" outline="true" size="sm" mdbWavesEffect type="button"
+                class="m-0">Button</button>
+            </td>
+            <td>@fat</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>Larry</td>
+            <td>the Bird</td>
+            <td>
+              <button mdbBtn color="primary" outline="true" size="sm" mdbWavesEffect type="button"
+                class="m-0">Button</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+      aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="container">
+            <div class="row">
+                <div class="dropdown" mdbDropdown>
+
+                    <button mdbDropdownToggle mdbBtn color="primary" class="dropdown-toggle waves-light" type="button"
+                      mdbWavesEffect>
+                      Dropdown primary
+                    </button>
+                  
+                    <div class="dropdown-menu dropdown-primary">
+                      <button class="dropdown-item" href="#">Action</button>
+                      <button class="dropdown-item" href="#">Another action</button>
+                      <button class="dropdown-item" href="#">Something else here</button>
+                      <button class="dropdown-item" href="#">Something else here</button>
+                    </div>
+                  </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
