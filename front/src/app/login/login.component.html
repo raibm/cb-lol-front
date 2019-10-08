@@ -1,0 +1,42 @@
+<block-ui> 
+<div class="container" id="login">
+        <div class="d-flex justify-content-center h-100">
+            <div class="card">
+                <div class="card-header">
+                    <h3>Login</h3>
+                    <div class="d-flex justify-content-end social_icon">
+                        <span><i class="fab fa-facebook-square"></i></span>
+                        <span><i class="fab fa-google-plus-square"></i></span>
+                        <span><i class="fab fa-twitter-square"></i></span>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="md-form md-bg">
+                            <input type="text" id="formBg1" class="form-control" mdbInput>
+                            <label for="formBg1">Usuario</label>
+                        </div>
+                        <div class="md-form md-bg">
+                            <input type="text" id="formBg1" class="form-control" mdbInput type="password">
+                            <label for="formBg1">Senha</label>
+                        </div>
+                        <div class="form-group">
+                            <button type="button" gradient="sunny-morning" rounded="true"
+                                    id="btnEntrar" class="btnEntrar">ENTRAR</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <b id="info">Não é um invocador?</b>
+                    <a id="cadastro" (click)="navegarCadastro()">&nbsp; Cadastre-se</a>
+                </div>
+                <img id="jinxVrau" src="../../assets/jinx-transparente.png">
+            </div>
+        </div>
+    </div>
+    <div fxLayout="row" fxFlex="100">
+        <div class="content" fxLayout="column" fxFlex>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</block-ui>

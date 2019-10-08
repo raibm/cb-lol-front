@@ -1,14 +1,42 @@
+<header class="h-100">
+    <mdb-navbar SideClass="navbar navbar-expand-lg navbar-dark" [containerInside]="true" id="navBar" class="navCss">
+        <mdb-navbar-brand>
+            <button class="pure-button fuller-button yellow" (click)="navegarParaPrincipal()"><i class="fa fa-home">COMPUILDER</i></button>
+        </mdb-navbar-brand>
+        <ul class="navbar-nav mr-auto" id="rightItems">
+            <li class="nav-item waves-light">
+                <button class="pure-button fuller-button yellow" id="btnRedeSocial"><a class="fab fa-github"
+                        href="https://github.com/raibm"></a></button>
+            </li>
+            <li class="nav-item waves-light">
+                <button class="pure-button fuller-button yellow" id="btnRedeSocial"><a class="fab fa-linkedin"
+                        href="https://www.linkedin.com/in/rai-bizerra-maciel-6b4552155/"></a></button>
+            </li>
+        </ul>
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item waves-light" mdbWavesEffect>
+                <button class="pure-button fuller-button yellow" (click)="navegarParaSobre()">
+                    <mdb-icon fas icon="book-open"></mdb-icon>
+                </button>
+            </li>
+        </ul>
+    </mdb-navbar>
 
-    <!-- Start your project here-->
-<div style="height: 100vh">
-  <div class="flex-center flex-column">
-    <h1 class="animated fadeIn mb-4">Material Design for Bootstrap (Angular)</h1>
-
-    <h5 class="animated fadeIn mb-3">Thank you for using our product. We're glad you're with us.</h5>
-    <h6 class="animated fadeIn mb-3">Start browsing <a href="https://mdbootstrap.com/angular">documentation</a>.</h6>
-
-    <p class="animated fadeIn text-muted">MDB Team</p>
-  </div>
-</div>
-<!-- /Start your project here-->
+    <div class="container">
+        <footer>
+            <a>&copy; Copyright 2019 Rai Bizerra Maciel</a></footer>
+    </div>
     
+</header>
+<div fxLayout="row" fxFlex="100">
+    <div class="content" fxLayout="column" fxFlex>
+        <router-outlet></router-outlet>
+    </div>
+
+</div>
+
+<div class="container">
+    <video id="video" autoplay muted loop="true">
+        <source src="../assets/Odiseia.mp4" type="video/mp4">
+    </video>
+</div>
