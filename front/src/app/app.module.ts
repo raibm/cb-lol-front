@@ -13,6 +13,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BlockUIModule } from 'ng-block-ui';
 import { SobreComponent } from './sobre/sobre.component';
 import { PrincipalComponent } from './principal/principal.component';
+import { AuthGuard } from './login/auth-guard';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,7 @@ import { PrincipalComponent } from './principal/principal.component';
     FormsModule,
     BlockUIModule.forRoot()
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
