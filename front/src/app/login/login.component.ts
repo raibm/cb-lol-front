@@ -20,4 +20,8 @@ export class LoginComponent implements OnInit {
     this.route.navigate(['cadastro']);
   }
 
+  navegarComposicoes(){
+    this.route.navigate(['principal']);
+  }
+
 }

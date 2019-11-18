@@ -13,7 +13,7 @@ export class PrincipalComponent implements OnInit {
     {autor: 'Faker', imgCapa: '../../assets/Ezreal.png', comentarios: '24', titulo: 'SKT T1 Final 2016' },
     {autor: 'Helmsmasher', imgCapa: '../../assets/Lux.png', comentarios: '7', titulo: 'Only Girls' },
     {autor: 'Helmsmasher', imgCapa: '../../assets/Miss_Fortuness.png', comentarios: '7', titulo: 'Fnatic' },
-    {autor: 'Helmsmasher', imgCapa: '../../assets/Pyke.png', comentarios: '7', titulo: 'Only Girls' }, 
+    {autor: 'Helmsmasher', imgCapa: '../../assets/Pyke.png', comentarios: '7', titulo: 'Only Ninjas' }, 
   ]
 
   composicoesMaisVotadas: any[] = [

@@ -11,7 +11,10 @@
         <button class="pure-button fuller-button yellow" (click)="frame.show()">
           NOVA COMP <mdb-icon fas icon="users"></mdb-icon>
         </button>
-
+        <div class="md-form">
+            <input mdbInput type="text" id="form3" class="form-control">
+            <label for="form1" class="">Buscar composição</label>
+          </div>
       </div>
     </div>
     <div id="geral" class="col-md-6">
@@ -194,12 +197,12 @@
             </div>
             <!--Basic textarea-->
             <div class="md-form">
+                <input mdbInput type="text" id="form1" class="form-control">
+                <label for="form1" class="">Titulo</label>
+              </div>
+            <div class="md-form">
               <textarea type="text" id="form7" class="md-textarea form-control" mdbInput></textarea>
               <label for="form7">Descrição</label>
-            </div>
-            <div class="md-form">
-              <input mdbInput type="text" id="form1" class="form-control">
-              <label for="form1" class="">Titulo</label>
             </div>
           </div>
         </div>
