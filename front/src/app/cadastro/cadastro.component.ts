@@ -21,15 +21,6 @@ export class CadastroComponent implements OnInit {
 
   avatar: number;
 
-  opcoesAvatar: any[] = [
-    {label: "Ezreal", value: 1, url: "../../assets/Ezreal.png"},
-    {label: "Jinx", value: 2, url: "../../assets/Jinx.png"},
-    {label: "Miss Fortuness", value: 3, url: "../../assets/Miss_Fortuness.png"},
-    {label: "Pyke", value: 4, url: "../../assets/Pyke.png"},
-    {label: "Sylas", value: 5, url: "../../assets/Sylas.png"},
-    {label: "Lux", value: 6, url: "../../assets/Lux.png"}
-  ]
-
   constructor(private route: Router) { }
 
   @BlockUI() blockUI: NgBlockUI;

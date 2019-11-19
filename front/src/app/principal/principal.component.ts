@@ -176,7 +176,4 @@ export class PrincipalComponent implements OnInit {
   ngOnInit() {
   }
 
-  teste(event){
-    console.log(event);
-  }
 }
