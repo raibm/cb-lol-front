@@ -14,21 +14,21 @@
                 <p>Junte-se a outros jogadores e traga sua estratégia para o Nexus!</p>
 
                 <div class="md-form md-bg">
-                    <input type="text" id="formBg1" class="form-control" mdbInput>
+                    <input [(ngModel)]="nome" type="text" id="formBg1" class="form-control" mdbInput>
                     <label for="formBg1">Nome</label>
                 </div>
 
                 <div class="md-form md-bg">
-                    <input type="email" id="formBg1" class="form-control" mdbInput>
+                    <input [(ngModel)]="email" type="email" id="formBg1" class="form-control" mdbInput>
                     <label for="formBg1">E-mail</label>
                 </div>
 
                 <div class="md-form md-bg">
-                    <input type="password" id="formBg1" class="form-control" mdbInput>
+                    <input [(ngModel)]="senha" type="password" id="formBg1" class="form-control" mdbInput>
                     <label for="formBg1">Senha</label>
                 </div>
                 <div class="md-form md-bg">
-                    <button class="pure-button fuller-button blue" id="btnRedeSocial" data-target="#basicExample"
+                    <button [(ngModel)]="avatar" class="pure-button fuller-button blue" id="btnRedeSocial" data-target="#basicExample"
                         (click)="frame.show()" mdbWavesEffect>AVATAR</button>
                 </div>
                 <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
@@ -37,29 +37,29 @@
                         <div class="modal-content">
                             <div class="container">
                                 <div class="row">
-                                    <a data-toggle="lightbox"
+                                    <a data-toggle="lightbox" (click)="definirValorAvatar(1)"
                                         data-gallery="gallery" class="col-md-4">
                                         <img src="../../assets/Ezreal.png" class="img-fluid rounded">
                                     </a>
-                                    <a  data-toggle="lightbox"
+                                    <a  data-toggle="lightbox" (click)="definirValorAvatar(2)"
                                         data-gallery="gallery" class="col-md-4">
                                         <img src="../../assets/Jinx.png" class="img-fluid rounded">
                                     </a>
-                                    <a  data-toggle="lightbox"
+                                    <a  data-toggle="lightbox" (click)="definirValorAvatar(3)"
                                         data-gallery="gallery" class="col-md-4">
                                         <img src="../../assets/Lux.png" class="img-fluid rounded">
                                     </a>
                                 </div>
                                 <div class="row">
-                                    <a  data-toggle="lightbox"
+                                    <a  data-toggle="lightbox" (click)="definirValorAvatar(4)"
                                         data-gallery="gallery" class="col-md-4">
                                         <img src="../../assets/Miss_Fortuness.png" class="img-fluid rounded">
                                     </a>
-                                    <a  data-toggle="lightbox"
+                                    <a  data-toggle="lightbox" (click)="definirValorAvatar(5)"
                                         data-gallery="gallery" class="col-md-4">
                                         <img src="../../assets/Pyke.png" class="img-fluid rounded">
                                     </a>
-                                    <a  data-toggle="lightbox"
+                                    <a  data-toggle="lightbox" (click)="definirValorAvatar(6)"
                                         data-gallery="gallery" class="col-md-4">
                                         <img src="../../assets/Sylas.png" class="img-fluid rounded">
                                     </a>

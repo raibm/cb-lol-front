@@ -13,11 +13,11 @@
                 <div class="card-body">
                     <form>
                         <div class="md-form md-bg">
-                            <input type="text" id="formBg1" class="form-control" mdbInput>
+                            <input [(ngModel)]="nome" type="text" id="formBg1" class="form-control" mdbInput [ngModelOptions]="{standalone: true}">
                             <label for="formBg1">Usuario</label>
                         </div>
                         <div class="md-form md-bg">
-                            <input type="text" id="formBg1" class="form-control" mdbInput type="password">
+                            <input [(ngModel)]="senha" type="text" id="formBg1" class="form-control" mdbInput type="password" [ngModelOptions]="{standalone: true}">
                             <label for="formBg1">Senha</label>
                         </div>
                         <div class="form-group">

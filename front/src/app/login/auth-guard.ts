@@ -2,6 +2,7 @@ import { Injectable, EventEmitter } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Perfil } from '../models/perfil.model';
+import { GlobalService } from '../global.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -12,7 +13,7 @@ export class AuthGuard implements CanActivate {
 
 
 
-  constructor(private route: Router) { }
+  constructor(private route: Router, private globalService: GlobalService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
     Observable<boolean> | boolean {
@@ -25,10 +26,12 @@ export class AuthGuard implements CanActivate {
   }
 
   fazerLogin(usuario: Perfil) {
-    if (usuario.email === "teste@gmail.pocotom" && usuario.senha === "senhadificil123") {
+    if (usuario.nome === "rai" && usuario.senha === "123") {
       this.usuarioAutenticado = true;
 
       this.mostrarMenuEmitter.emit(true);
+
+      this.globalService.definirUsuarioLogado(usuario);
 
       this.route.navigate(['/principal']);
     } else {

@@ -14,6 +14,7 @@ import { BlockUIModule } from 'ng-block-ui';
 import { SobreComponent } from './sobre/sobre.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { AuthGuard } from './login/auth-guard';
+import { GlobalService } from './global.service';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,7 @@ import { AuthGuard } from './login/auth-guard';
     FormsModule,
     BlockUIModule.forRoot()
   ],
-  providers: [AuthGuard],
+  providers: [AuthGuard, GlobalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

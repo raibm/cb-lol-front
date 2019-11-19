@@ -13,6 +13,12 @@ export class LoginComponent implements OnInit {
   constructor(private route: Router, private authGuard: AuthGuard) { }
   @BlockUI() blockUI: NgBlockUI;
 
+  nome: string = "";
+
+  senha: string = ""
+
+  usuario: Perfil = new Perfil;
+
   ngOnInit() {
     this.blockUI.stop();
   }
@@ -23,11 +29,9 @@ export class LoginComponent implements OnInit {
   }
 
   navegarComposicoes(){
-    let usuario: Perfil = new Perfil;
-    usuario.nome = "rai";
-    usuario.senha = "senhadificil123";
-    usuario.email = "teste@gmail.pocotom";
-    this.authGuard.fazerLogin(usuario);
+    this.usuario.nome = this.nome;
+    this.usuario.senha = this.senha;
+    this.authGuard.fazerLogin(this.usuario);
   }
 
 }
