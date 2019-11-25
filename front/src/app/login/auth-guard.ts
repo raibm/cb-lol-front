@@ -3,6 +3,7 @@ import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from
 import { Observable } from 'rxjs';
 import { Perfil } from '../models/perfil.model';
 import { GlobalService } from '../global.service';
+import { NgBlockUI, BlockUI } from 'ng-block-ui';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -11,7 +12,7 @@ export class AuthGuard implements CanActivate {
 
   mostrarMenuEmitter = new EventEmitter<boolean>();
 
-
+  @BlockUI() blockUI: NgBlockUI;
 
   constructor(private route: Router, private globalService: GlobalService) { }
 
@@ -26,6 +27,7 @@ export class AuthGuard implements CanActivate {
   }
 
   fazerLogin(usuario: Perfil) {
+    this.blockUI.start("Carregando...")
     if (usuario.nome === "rai" && usuario.senha === "123") {
       this.usuarioAutenticado = true;
 
@@ -34,6 +36,7 @@ export class AuthGuard implements CanActivate {
       this.globalService.definirUsuarioLogado(usuario);
 
       this.route.navigate(['/principal']);
+      this.blockUI.stop();
     } else {
       this.usuarioAutenticado = false;
       this.mostrarMenuEmitter.emit(false);
