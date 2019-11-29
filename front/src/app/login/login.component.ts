@@ -20,6 +20,7 @@ export class LoginComponent implements OnInit {
   usuario: Perfil = new Perfil;
 
   ngOnInit() {
+    this.authGuard.verificarUsuarioAtual();
     this.blockUI.stop();
   }
 
@@ -29,8 +30,8 @@ export class LoginComponent implements OnInit {
   }
 
   navegarComposicoes(){
-    this.usuario.nome = this.nome;
-    this.usuario.senha = this.senha;
+    this.usuario.login = this.nome;
+    this.usuario.password = this.senha;
     this.authGuard.fazerLogin(this.usuario);
   }
 

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 
 import { CadastroComponent } from './cadastro/cadastro.component';
@@ -15,6 +15,8 @@ import { SobreComponent } from './sobre/sobre.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { AuthGuard } from './login/auth-guard';
 import { GlobalService } from './global.service';
+import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -24,6 +26,7 @@ import { GlobalService } from './global.service';
     PerfilComponent,
     SobreComponent,
     PrincipalComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,9 @@ import { GlobalService } from './global.service';
     MDBBootstrapModule.forRoot(),
     AppRoutingModule,
     FormsModule,
-    BlockUIModule.forRoot()
+    HttpClientModule,
+    BlockUIModule.forRoot(),
+    ReactiveFormsModule
   ],
   providers: [AuthGuard, GlobalService],
   bootstrap: [AppComponent]

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { Perfil } from '../models/perfil.model';
 import { GlobalService } from '../global.service';
 import { NgBlockUI, BlockUI } from 'ng-block-ui';
+import { UsuarioService } from '../services/usuario.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -14,7 +15,7 @@ export class AuthGuard implements CanActivate {
 
   @BlockUI() blockUI: NgBlockUI;
 
-  constructor(private route: Router, private globalService: GlobalService) { }
+  constructor(private route: Router, private globalService: GlobalService, private usuarioService: UsuarioService) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot):
     Observable<boolean> | boolean {
@@ -26,22 +27,45 @@ export class AuthGuard implements CanActivate {
     return false;
   }
 
-  fazerLogin(usuario: Perfil) {
+  async fazerLogin(usuario: Perfil) {
     this.blockUI.start("Carregando...")
-    if (usuario.nome === "rai" && usuario.senha === "123") {
-      this.usuarioAutenticado = true;
 
-      this.mostrarMenuEmitter.emit(true);
+    if (this.verificarUsuarioAtual()) {
+      await this.usuarioService.verificarLogin(usuario).subscribe(usuarioLogado => {
+        if (usuarioLogado) {
+          this.usuarioAutenticado = true;
 
-      this.globalService.definirUsuarioLogado(usuario);
+          this.mostrarMenuEmitter.emit(true);
 
-      this.route.navigate(['/principal']);
+          this.globalService.definirUsuarioLogado(usuarioLogado);
+
+          localStorage.setItem("usuario", usuarioLogado.id.toString());
+
+          this.route.navigate(['/principal']);
+
+        } else {
+          this.usuarioAutenticado = false;
+
+          this.mostrarMenuEmitter.emit(false);
+
+          this.route.navigate(['/login']);
+
+        }
+      });
+
       this.blockUI.stop();
-    } else {
-      this.usuarioAutenticado = false;
-      this.mostrarMenuEmitter.emit(false);
-      this.route.navigate(['/login']);
     }
+
+  }
+
+  verificarUsuarioAtual() {
+    let a = localStorage.getItem('usuario');
+    if (a) {
+      this.usuarioAutenticado = true;
+      this.route.navigate(['/principal']);
+      return false;
+    }
+    return true;
   }
 
   usuarioEstaAutenticado() {

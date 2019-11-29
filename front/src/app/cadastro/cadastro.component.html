@@ -14,21 +14,21 @@
                 <p>Junte-se a outros jogadores e traga sua estratégia para o Nexus!</p>
 
                 <div class="md-form md-bg">
-                    <input [(ngModel)]="nome" type="text" id="formBg1" class="form-control" mdbInput>
+                    <input [(ngModel)]="nome" type="text" id="formBg1" class="form-control" mdbInput ngDefaultControl>
                     <label for="formBg1">Nome</label>
                 </div>
 
                 <div class="md-form md-bg">
-                    <input [(ngModel)]="email" type="email" id="formBg1" class="form-control" mdbInput>
-                    <label for="formBg1">E-mail</label>
+                    <input [(ngModel)]="email" type="email" id="formBg2" class="form-control" mdbInput ngDefaultControl>
+                    <label for="formBg2">E-mail</label>
                 </div>
 
                 <div class="md-form md-bg">
-                    <input [(ngModel)]="senha" type="password" id="formBg1" class="form-control" mdbInput>
-                    <label for="formBg1">Senha</label>
+                    <input [(ngModel)]="senha" type="password" id="formBg3" class="form-control" mdbInput ngDefaultControl>
+                    <label for="formBg3">Senha</label>
                 </div>
                 <div class="md-form md-bg">
-                    <button [(ngModel)]="avatar" class="pure-button fuller-button blue" id="btnRedeSocial" data-target="#basicExample"
+                    <button class="pure-button fuller-button blue" id="btnRedeSocial" data-target="#basicExample"
                         (click)="frame.show()" mdbWavesEffect>AVATAR</button>
                 </div>
                 <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
@@ -74,7 +74,7 @@
                         <button type="button" id="btnVoltar" class="botaoVoltar"
                             (click)="navegarLogin()">Voltar</button>
                         <button type="button" id="btnValidar" class="botaoValidar"
-                            (click)="navegarLogin()">Validar</button>
+                            (click)="criarPerfil()">Validar</button>
                     </div>
                 </div>
             </div>

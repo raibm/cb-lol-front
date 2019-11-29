@@ -1,7 +1,8 @@
 export class Perfil {
     constructor(
-        public nome?: string,
-        public senha?: string,
+        public id?: number,
+        public login?: string,
+        public password?: string,
         public email?: string,
         public avatar?: number
     ){
