@@ -16,6 +16,8 @@ import { PrincipalComponent } from './principal/principal.component';
 import { AuthGuard } from './login/auth-guard';
 import { GlobalService } from './global.service';
 import { HttpClientModule } from '@angular/common/http';
+import { CampeoesUtil } from './principal/campeoes.util';
+import { AvatarUtil } from './principal/avatar.util';
 
 
 @NgModule({
@@ -38,7 +40,7 @@ import { HttpClientModule } from '@angular/common/http';
     BlockUIModule.forRoot(),
     ReactiveFormsModule
   ],
-  providers: [AuthGuard, GlobalService],
+  providers: [AuthGuard, GlobalService, CampeoesUtil, AvatarUtil],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

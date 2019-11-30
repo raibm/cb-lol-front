@@ -8,7 +8,7 @@
         <button class="pure-button fuller-button yellow">
           SUAS COMPS <mdb-icon fas icon="list-ul"></mdb-icon>
         </button>
-        <button class="pure-button fuller-button yellow" (click)="frame.show()">
+        <button class="pure-button fuller-button yellow" (click)="frameNovo.show()">
           NOVA COMP <mdb-icon fas icon="users"></mdb-icon>
         </button>
         <div class="md-form">
@@ -33,9 +33,9 @@
 
         <tbody *ngFor="let comp of composicoes">
           <tr>
-            <td><img style="height: 20px; width: 20px;" src="{{comp.imgCapa}}"></td>
-            <td>{{comp.autor}}</td>
-            <td>{{comp.titulo}}</td>
+            <td><img style="height: 20px; width: 20px;" [src]="obterAvatarInvocador(comp.user.avatar)"></td>
+            <td>{{comp.user.login}}</td>
+            <td>{{comp.title}}</td>
             <td>
               <mdb-icon fas icon="eye" (click)="teste(comp)"></mdb-icon>
             </td>
@@ -58,40 +58,12 @@
             <th>Username</th>
           </tr>
         </thead>
-
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>
-              <button mdbBtn color="primary" outline="true" size="sm" mdbWavesEffect type="button"
-                class="m-0">Button</button>
-            </td>
-            <td>Otto</td>
-            <td>@mdo</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>
-              <button mdbBtn color="primary" outline="true" size="sm" mdbWavesEffect type="button"
-                class="m-0">Button</button>
-            </td>
-            <td>@fat</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>
-              <button mdbBtn color="primary" outline="true" size="sm" mdbWavesEffect type="button"
-                class="m-0">Button</button>
-            </td>
-          </tr>
         </tbody>
       </table>
     </div>
-
-    <div mdbModal #frame="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
+    
+    <div mdbModal #frameNovo="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
       aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -99,19 +71,19 @@
             <div class="row">
               <ul id="campeoes">
                 <li id="top">
-                  <img src='../../assets/opcoesCampeoes/Akali_Render.png'>
+                  <img [src]='campeaoTop.imagem'>
                 </li>
                 <li id="selva">
-                  <img src='../../assets/opcoesCampeoes/Master_Yi_Render.png'>
+                  <img [src]='campeaoJg.imagem'>
                 </li>
                 <li id="meio">
-                  <img src='../../assets/opcoesCampeoes//Zed_Render.png'>
+                  <img [src]='campeaoMid.imagem'>
                 </li>
                 <li id="atirador">
-                  <img src='../../assets/opcoesCampeoes/Yasuo_Render.png'>
+                  <img [src]='campeaoAdc.imagem'>
                 </li>
                 <li id="suporte">
-                  <img src='../../assets/opcoesCampeoes/Shen_Render.png'>
+                  <img [src]='campeaoSup.imagem'>
                 </li>
               </ul>
               <ul id="campeoes">
@@ -121,11 +93,11 @@
 
                     <button mdbDropdownToggle mdbBtn color="primary"
                       class="dropdown-toggle waves-light pure-button fuller-button yellow" type="button" mdbWavesEffect>
-                      selecione
+                      {{campeaoTop.nome}}
                     </button>
 
                     <div class="dropdown-menu dropdown-primary">
-                      <button *ngFor="let campeao of campeoes" class="dropdown-item" href="#">{{campeao.nome}}</button>
+                      <button *ngFor="let campeao of campeoes" class="dropdown-item" (click)="selecionarCampeao(campeao, 0, 'campeaoTop')" href="#">{{campeao.nome}}</button>
                     </div>
                   </div>
 
@@ -136,11 +108,11 @@
 
                     <button mdbDropdownToggle mdbBtn color="primary"
                       class="dropdown-toggle waves-light pure-button fuller-button yellow" type="button" mdbWavesEffect>
-                      selecione
+                      {{campeaoJg.nome}}
                     </button>
 
                     <div class="dropdown-menu dropdown-primary">
-                      <button *ngFor="let campeao of campeoes" class="dropdown-item" href="#">{{campeao.nome}}</button>
+                      <button *ngFor="let campeao of campeoes" class="dropdown-item" (click)="selecionarCampeao(campeao, 1, 'campeaoJg')" href="#">{{campeao.nome}}</button>
                     </div>
                   </div>
 
@@ -152,11 +124,11 @@
 
                     <button mdbDropdownToggle mdbBtn color="primary"
                       class="dropdown-toggle waves-light pure-button fuller-button yellow" type="button" mdbWavesEffect>
-                      selecione
+                      {{campeaoMid.nome}}
                     </button>
 
                     <div class="dropdown-menu dropdown-primary">
-                      <button *ngFor="let campeao of campeoes" class="dropdown-item" href="#">{{campeao.nome}}</button>
+                      <button *ngFor="let campeao of campeoes" class="dropdown-item" (click)="selecionarCampeao(campeao, 2, 'campeaoMid')" href="#">{{campeao.nome}}</button>
                     </div>
                   </div>
 
@@ -168,11 +140,11 @@
 
                     <button mdbDropdownToggle mdbBtn color="primary"
                       class="dropdown-toggle waves-light pure-button fuller-button yellow" type="button" mdbWavesEffect>
-                      selecione
+                      {{campeaoAdc.nome}}
                     </button>
 
                     <div class="dropdown-menu dropdown-primary">
-                      <button *ngFor="let campeao of campeoes" class="dropdown-item" href="#">{{campeao.nome}}</button>
+                      <button *ngFor="let campeao of campeoes" class="dropdown-item" (click)="selecionarCampeao(campeao, 3, 'campeaoAdc')" href="#">{{campeao.nome}}</button>
                     </div>
                   </div>
 
@@ -184,11 +156,11 @@
 
                     <button mdbDropdownToggle mdbBtn color="primary"
                       class="dropdown-toggle waves-light pure-button fuller-button yellow" type="button" mdbWavesEffect>
-                      selecione
+                      {{campeaoSup.nome}}
                     </button>
 
                     <div class="dropdown-menu dropdown-primary">
-                      <button *ngFor="let campeao of campeoes" class="dropdown-item" href="#">{{campeao.nome}}</button>
+                      <button *ngFor="let campeao of campeoes" class="dropdown-item" (click)="selecionarCampeao(campeao, 4, 'campeaoSup')" href="#">{{campeao.nome}}</button>
                     </div>
                   </div>
 
@@ -197,13 +169,16 @@
             </div>
             <!--Basic textarea-->
             <div class="md-form">
-                <input mdbInput type="text" id="form1" class="form-control">
+                <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="composicao.title">
                 <label for="form1" class="">Titulo</label>
               </div>
             <div class="md-form">
-              <textarea type="text" id="form7" class="md-textarea form-control" mdbInput></textarea>
+              <textarea type="text" id="form7" class="md-textarea form-control" mdbInput [(ngModel)]="composicao.description"></textarea>
               <label for="form7">Descrição</label>
             </div>
+            <button *ngIf="verificarHabilitarSalvar()" [disabled]="salvarHabilitado" class="pure-button fuller-button yellow" (click)="frameNovo.hide(); salvar()">
+                SUAS COMPS <mdb-icon fas icon="list-ul"></mdb-icon>
+              </button>
           </div>
         </div>
       </div>

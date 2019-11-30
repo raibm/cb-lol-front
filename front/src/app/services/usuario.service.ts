@@ -12,6 +12,7 @@ export class UsuarioService {
 
   Url="http://localhost:3333/users"
   UrlLogin="http://localhost:3333/login"
+  UrlFindById="http://localhost:3333/find-user/"
 
   getUsuarios(){
     return this.http.get<Perfil[]>(this.Url);
@@ -22,7 +23,7 @@ export class UsuarioService {
   }
 
   getUsuarioPorId(id: number){
-    return this.http.get<Perfil>(this.Url+"/"+id);
+    return this.http.get<Perfil>(this.UrlFindById+id);
   }
 
   verificarLogin(perfil: Perfil): Observable<Perfil>{

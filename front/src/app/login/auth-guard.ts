@@ -61,8 +61,11 @@ export class AuthGuard implements CanActivate {
   verificarUsuarioAtual() {
     let a = localStorage.getItem('usuario');
     if (a) {
-      this.usuarioAutenticado = true;
-      this.route.navigate(['/principal']);
+      this.usuarioService.getUsuarioPorId(Number(a)).subscribe(usuario => {
+        this.globalService.definirUsuarioLogado(usuario);
+        this.usuarioAutenticado = true;
+        this.route.navigate(['/principal']);
+      }) 
       return false;
     }
     return true;
