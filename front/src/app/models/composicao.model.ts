@@ -14,7 +14,7 @@ export class Composicao {
         public adc_champion?: number,
         public sup_champion?: number,
         public description?: string,
-        public comentarios: Comentario[] = []
+        public comment: Comentario[] = []
     ){
 
     }

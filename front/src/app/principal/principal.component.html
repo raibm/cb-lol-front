@@ -8,13 +8,13 @@
         <button class="pure-button fuller-button yellow">
           SUAS COMPS <mdb-icon fas icon="list-ul"></mdb-icon>
         </button>
-        <button class="pure-button fuller-button yellow" (click)="frameNovo.show()">
+        <button class="pure-button fuller-button yellow" (click)="frameNovo.show(); novaComp();">
           NOVA COMP <mdb-icon fas icon="users"></mdb-icon>
         </button>
         <div class="md-form">
-            <input mdbInput type="text" id="form3" class="form-control">
-            <label for="form1" class="">Buscar composição</label>
-          </div>
+          <input mdbInput type="text" id="form3" class="form-control">
+          <label for="form1" class="">Buscar composição</label>
+        </div>
       </div>
     </div>
     <div id="geral" class="col-md-6">
@@ -37,7 +37,7 @@
             <td>{{comp.user.login}}</td>
             <td>{{comp.title}}</td>
             <td>
-              <mdb-icon fas icon="eye" (click)="teste(comp)"></mdb-icon>
+              <mdb-icon fas icon="eye" (click)="visualizar(comp); frameNovo.show()"></mdb-icon>
             </td>
           </tr>
         </tbody>
@@ -62,7 +62,7 @@
         </tbody>
       </table>
     </div>
-    
+
     <div mdbModal #frameNovo="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"
       aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -91,13 +91,14 @@
                   <img id="rotas" src='../../assets/Top_icon.png'>
                   <div class="dropdown" mdbDropdown>
 
-                    <button mdbDropdownToggle mdbBtn color="primary"
+                    <button [disabled]="eVisualizacao" mdbDropdownToggle mdbBtn color="primary"
                       class="dropdown-toggle waves-light pure-button fuller-button yellow" type="button" mdbWavesEffect>
                       {{campeaoTop.nome}}
                     </button>
 
                     <div class="dropdown-menu dropdown-primary">
-                      <button *ngFor="let campeao of campeoes" class="dropdown-item" (click)="selecionarCampeao(campeao, 0, 'campeaoTop')" href="#">{{campeao.nome}}</button>
+                      <button *ngFor="let campeao of campeoes" class="dropdown-item"
+                        (click)="selecionarCampeao(campeao, 0, 'campeaoTop')" href="#">{{campeao.nome}}</button>
                     </div>
                   </div>
 
@@ -106,13 +107,14 @@
                   <img id="rotas" src='../../assets/Jungle_icon.png'>
                   <div class="dropdown" mdbDropdown>
 
-                    <button mdbDropdownToggle mdbBtn color="primary"
+                    <button [disabled]="eVisualizacao" mdbDropdownToggle mdbBtn color="primary"
                       class="dropdown-toggle waves-light pure-button fuller-button yellow" type="button" mdbWavesEffect>
                       {{campeaoJg.nome}}
                     </button>
 
                     <div class="dropdown-menu dropdown-primary">
-                      <button *ngFor="let campeao of campeoes" class="dropdown-item" (click)="selecionarCampeao(campeao, 1, 'campeaoJg')" href="#">{{campeao.nome}}</button>
+                      <button *ngFor="let campeao of campeoes" class="dropdown-item"
+                        (click)="selecionarCampeao(campeao, 1, 'campeaoJg')" href="#">{{campeao.nome}}</button>
                     </div>
                   </div>
 
@@ -122,13 +124,14 @@
 
                   <div class="dropdown" mdbDropdown>
 
-                    <button mdbDropdownToggle mdbBtn color="primary"
+                    <button [disabled]="eVisualizacao" mdbDropdownToggle mdbBtn color="primary"
                       class="dropdown-toggle waves-light pure-button fuller-button yellow" type="button" mdbWavesEffect>
                       {{campeaoMid.nome}}
                     </button>
 
                     <div class="dropdown-menu dropdown-primary">
-                      <button *ngFor="let campeao of campeoes" class="dropdown-item" (click)="selecionarCampeao(campeao, 2, 'campeaoMid')" href="#">{{campeao.nome}}</button>
+                      <button *ngFor="let campeao of campeoes" class="dropdown-item"
+                        (click)="selecionarCampeao(campeao, 2, 'campeaoMid')" href="#">{{campeao.nome}}</button>
                     </div>
                   </div>
 
@@ -138,13 +141,14 @@
 
                   <div class="dropdown" mdbDropdown>
 
-                    <button mdbDropdownToggle mdbBtn color="primary"
+                    <button [disabled]="eVisualizacao" mdbDropdownToggle mdbBtn color="primary"
                       class="dropdown-toggle waves-light pure-button fuller-button yellow" type="button" mdbWavesEffect>
                       {{campeaoAdc.nome}}
                     </button>
 
                     <div class="dropdown-menu dropdown-primary">
-                      <button *ngFor="let campeao of campeoes" class="dropdown-item" (click)="selecionarCampeao(campeao, 3, 'campeaoAdc')" href="#">{{campeao.nome}}</button>
+                      <button *ngFor="let campeao of campeoes" class="dropdown-item"
+                        (click)="selecionarCampeao(campeao, 3, 'campeaoAdc')" href="#">{{campeao.nome}}</button>
                     </div>
                   </div>
 
@@ -154,13 +158,14 @@
 
                   <div class="dropdown" mdbDropdown>
 
-                    <button mdbDropdownToggle mdbBtn color="primary"
+                    <button [disabled]="eVisualizacao" mdbDropdownToggle mdbBtn color="primary"
                       class="dropdown-toggle waves-light pure-button fuller-button yellow" type="button" mdbWavesEffect>
                       {{campeaoSup.nome}}
                     </button>
 
                     <div class="dropdown-menu dropdown-primary">
-                      <button *ngFor="let campeao of campeoes" class="dropdown-item" (click)="selecionarCampeao(campeao, 4, 'campeaoSup')" href="#">{{campeao.nome}}</button>
+                      <button *ngFor="let campeao of campeoes" class="dropdown-item"
+                        (click)="selecionarCampeao(campeao, 4, 'campeaoSup')" href="#">{{campeao.nome}}</button>
                     </div>
                   </div>
 
@@ -169,16 +174,36 @@
             </div>
             <!--Basic textarea-->
             <div class="md-form">
-                <input mdbInput type="text" id="form1" class="form-control" [(ngModel)]="composicao.title">
-                <label for="form1" class="">Titulo</label>
-              </div>
+              <input mdbInput type="text" id="form1" [disabled]="eVisualizacao" class="form-control"
+                [(ngModel)]="composicao.title">
+              <label for="form1" class="">Titulo</label>
+            </div>
             <div class="md-form">
-              <textarea type="text" id="form7" class="md-textarea form-control" mdbInput [(ngModel)]="composicao.description"></textarea>
+              <textarea type="text" id="form7" class="md-textarea form-control" [disabled]="eVisualizacao" mdbInput
+                [(ngModel)]="composicao.description"></textarea>
               <label for="form7">Descrição</label>
             </div>
-            <button *ngIf="verificarHabilitarSalvar()" [disabled]="salvarHabilitado" class="pure-button fuller-button yellow" (click)="frameNovo.hide(); salvar()">
-                SUAS COMPS <mdb-icon fas icon="list-ul"></mdb-icon>
-              </button>
+            <div id="comentarios" *ngIf="eVisualizacao" class="md-form">
+              <tbody *ngFor="let comentario of comentarios">
+                <tr>
+                  <td><img style="height: 50px; width: 50spx;" [src]="definirAvatar(comentario)"></td>
+                  <td><mdb-icon *ngIf="!desabilitarEdicao(comentario) && comentario.id" id="lixeira" (click)="excluirComentario(comentario)" fas icon="trash"></mdb-icon></td> 
+                  <td *ngIf="comentario.user"style="color: royalblue;">{{comentario.user.login}}</td>
+                  <textarea maxlength="255" [disabled]="desabilitarEdicao(comentario)" type="text" id="form7"
+                    class="md-textarea form-control" mdbInput [(ngModel)]="comentario.description"></textarea>
+                </tr>
+              </tbody>
+            </div>
+            <button *ngIf="verificarHabilitarSalvar() && !eVisualizacao" [disabled]="salvarHabilitado"
+              class="pure-button fuller-button yellow" (click)="frameNovo.hide(); salvar()">
+              SALVAR <mdb-icon fas icon="far fa-check-circle"></mdb-icon>
+            </button>
+            <button *ngIf="eVisualizacao" class="pure-button fuller-button yellow" (click)="novoComentario()">
+              NOVO COMENTARIO <mdb-icon fas icon="fas fa-comment-medical"></mdb-icon>
+            </button>
+            <button *ngIf="eVisualizacao" class="pure-button fuller-button yellow" (click)="salvarComentario()">
+              SALVAR COMENTARIO <mdb-icon fas icon="far fa-check-circle"></mdb-icon>
+            </button>
           </div>
         </div>
       </div>

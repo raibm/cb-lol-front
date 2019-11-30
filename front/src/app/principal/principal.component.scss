@@ -181,3 +181,23 @@ button{
   font-size: 15px;
 }
 
+#comentarios {
+  textarea{
+    background-color: #3b210c;
+    font-family: "Roboto", sans-serif;
+    letter-spacing: 2.5px;
+    border: none;
+    font-size: 15px;
+    color: #f39d1c;
+    width: 1000px;
+    margin-left: 2%;
+    text-align: inherit;
+  }
+}
+
+#lixeira {
+  color: #e98819;
+  &:hover{
+    color: red;
+  }
+}

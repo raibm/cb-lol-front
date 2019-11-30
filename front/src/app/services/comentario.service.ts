@@ -19,7 +19,11 @@ export class ComentarioService {
     return this.http.post<Comentario>(this.Url,comentario);
   }
 
-  deleteComposicao(comentario: Comentario){
+  deleteComentario(comentario: Comentario){
     return this.http.delete<Comentario>(this.Url+"/"+comentario.id);
+  }
+
+  updateComentario(comentario: Comentario){
+    return this.http.put<Comentario>(this.Url+'/'+comentario.id, comentario);
   }
 }

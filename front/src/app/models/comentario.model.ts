@@ -1,9 +1,12 @@
+import { Perfil } from './perfil.model';
+
 export class Comentario {
     constructor(
         public id?: number,
-        public idCriador?: number,
-        public idComposicao?: number,
-        public descricao?: string
+        public id_owner?: number,
+        public id_composition?: number,
+        public description?: string,
+        public user?: Perfil
     ){
 
     }

@@ -6,6 +6,9 @@ import { PosicaoMapa } from '../models/posicaoMapa-enum';
 import { Composicao } from '../models/composicao.model';
 import { GlobalService } from '../global.service';
 import { AvatarUtil } from './avatar.util';
+import { ComentarioService } from '../services/comentario.service';
+import { Comentario } from '../models/comentario.model';
+import { UsuarioService } from '../services/usuario.service';
 
 @Component({
   selector: 'app-principal',
@@ -20,9 +23,13 @@ export class PrincipalComponent implements OnInit {
 
   avatares: any[] = [];
 
-  eEdicao: boolean = false; 
+  eEdicao: boolean = false;
+
+  eVisualizacao: boolean = false;
 
   salvarHabilitado: boolean = true;
+
+  comentarios: Comentario[] = [];
 
   composicao: Composicao = new Composicao();
 
@@ -32,7 +39,12 @@ export class PrincipalComponent implements OnInit {
   campeaoAdc: Object = new Object({ nome: 'selecione', imagem: '../../assets/invocador.png' });
   campeaoSup: Object = new Object({ nome: 'selecione', imagem: '../../assets/invocador.png' });
 
-  constructor(private composicaoService: ComposicaoService, private campeoesUtil: CampeoesUtil, private globalService: GlobalService, private avataresUtil: AvatarUtil) { }
+  constructor(private composicaoService: ComposicaoService,
+    private campeoesUtil: CampeoesUtil,
+    private globalService: GlobalService,
+    private avataresUtil: AvatarUtil,
+    private comentarioService: ComentarioService,
+    private usuarioService: UsuarioService) { }
 
   @BlockUI() blockUI: NgBlockUI;
 
@@ -52,6 +64,12 @@ export class PrincipalComponent implements OnInit {
   definirCampeoesEAvatares() {
     this.avatares = this.avataresUtil.obterAvatares();
     this.campeoes = this.campeoesUtil.obterCampeoes();
+  }
+
+  novaComp(){
+    this.eVisualizacao = false;
+    this.limpar();
+    this.definirCampeoesEAvatares();
   }
 
   selecionarCampeao(campeao, index, posicao) {
@@ -111,8 +129,9 @@ export class PrincipalComponent implements OnInit {
     this.campeaoAdc = new Object({ nome: 'selecione', imagem: '../../assets/invocador.png' });
     this.campeaoJg = new Object({ nome: 'selecione', imagem: '../../assets/invocador.png' });
     this.campeaoMid = new Object({ nome: 'selecione', imagem: '../../assets/invocador.png' });
+    this.campeaoTop = new Object({ nome: 'selecione', imagem: '../../assets/invocador.png' });
     this.campeaoSup = new Object({ nome: 'selecione', imagem: '../../assets/invocador.png' });
-    this.campeaoSup = new Object({ nome: 'selecione', imagem: '../../assets/invocador.png' });
+    this.comentarios = [];
   }
 
   verificarHabilitarSalvar() {
@@ -126,11 +145,94 @@ export class PrincipalComponent implements OnInit {
     return true;
   }
 
-  obterAvatarInvocador(avatar: number){
+  obterAvatarInvocador(avatar: number) {
     let avatarInvocador = this.avatares.find(avatarAtual => {
-     return avatarAtual.value === avatar;
+      return avatarAtual.value === avatar;
     });
 
     return avatarInvocador.url;
+  }
+
+  visualizar(comp: Composicao) {
+    this.limpar();
+    this.composicao = comp;
+    this.eVisualizacao = true;
+    this.preencherValoresVisualizacao();
+  }
+
+  preencherValoresVisualizacao() {
+    this.campeaoTop = this.campeoes.find(campeao => {
+      return campeao.value === this.composicao.top_champion;
+    });
+    this.campeaoJg = this.campeoes.find(campeao => {
+      return campeao.value === this.composicao.jg_champion;
+    });
+    this.campeaoMid = this.campeoes.find(campeao => {
+      return campeao.value === this.composicao.mid_champion;
+    });
+    this.campeaoAdc = this.campeoes.find(campeao => {
+      return campeao.value === this.composicao.adc_champion;
+    });
+    this.campeaoSup = this.campeoes.find(campeao => {
+      return campeao.value === this.composicao.sup_champion;
+    });
+    this.comentarios = this.composicao.comment;
+    this.obterUsuarioComentario();
+  }
+
+  obterUsuarioComentario() {
+    this.composicao.comment.forEach(comentario => {
+      this.usuarioService.getUsuarioPorId(comentario.id_owner).subscribe(res => {
+        comentario.user = res;
+      });
+    });
+  }
+
+  definirAvatar(comentario: Comentario){
+    if(comentario && comentario.user){
+      let urlAvatar = this.avatares.find(avatar => {
+        return avatar.value === comentario.user.avatar;
+      });
+      return urlAvatar.url;
+    }
+    return '../../assets/invocador.png';
+  }
+
+  novoComentario() {
+    let comentario = new Comentario();
+    comentario.id_composition = this.composicao.id;
+    comentario.id_owner = this.globalService.obterUsuarioLogado().id;
+    this.comentarios.push(comentario);
+  }
+
+  salvarComentario() {
+    this.blockUI.start('Carregando...')
+    this.comentarios.forEach(comentario => {
+      if (!comentario.id) {
+        this.comentarioService.createComentario(comentario).subscribe(comentario => {
+        });
+      } else {
+        this.comentarioService.updateComentario(comentario).subscribe(comentario => {
+        });
+      }
+    });
+    this.blockUI.stop();
+  }
+
+  desabilitarEdicao(comentario: Comentario){
+    if(comentario.id_owner === this.globalService.obterUsuarioLogado().id){
+      return false;
+    }
+    return true;
+  }
+
+  excluirComentario(comentario: Comentario){
+    this.comentarios = this.composicao.comment.filter( c => {
+      return c.id !== comentario.id;
+    })
+    this.composicao.comment = this.comentarios;
+    this.comentarioService.deleteComentario(comentario).subscribe(() => {
+      console.log("deletado o comentário");
+    });
   }
 }

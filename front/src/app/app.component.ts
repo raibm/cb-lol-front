@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { GlobalService } from './global.service';
+import { AuthGuard } from './login/auth-guard';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +12,7 @@ export class AppComponent implements OnInit {
   title = 'mdb-angular-free';
   logado: boolean = false;
 
-  constructor(private route: Router){}
+  constructor(private route: Router, private globalService: GlobalService, private authGuard: AuthGuard){}
 
   ngOnInit(){
     this.route.navigate(['login']);
@@ -25,7 +27,8 @@ export class AppComponent implements OnInit {
   }
 
   navegarParaPrincipal(){
-    this.route.navigate(['principal']);
+    localStorage.removeItem('usuario');
+    this.route.navigate(['login']);
   }
 
 }
