@@ -36,9 +36,9 @@
             <td><img style="height: 20px; width: 20px;" [src]="obterAvatarInvocador(comp.user.avatar)"></td>
             <td>{{comp.user.login}}</td>
             <td>{{comp.title}}</td>
-            <td>
-              <mdb-icon fas icon="eye" (click)="visualizar(comp); frameNovo.show()"></mdb-icon>
-            </td>
+            <a><mdb-icon *ngIf="!desabilitarExclusao(comp)" id="lixeira2" (click)="excluirComposicao(comp)" fas icon="trash"></mdb-icon></a> 
+            <a><mdb-icon *ngIf="!desabilitarExclusao(comp)" id="editar" (click)="editarComposicao(comp); frameNovo.show()" fas icon="marker"></mdb-icon></a> 
+            <a><mdb-icon  id="visualizar" (click)="visualizar(comp); frameNovo.show()" fas icon="eye"></mdb-icon></a> 
           </tr>
         </tbody>
       </table>
@@ -201,7 +201,7 @@
             <button *ngIf="eVisualizacao" class="pure-button fuller-button yellow" (click)="novoComentario()">
               NOVO COMENTARIO <mdb-icon fas icon="fas fa-comment-medical"></mdb-icon>
             </button>
-            <button *ngIf="eVisualizacao" class="pure-button fuller-button yellow" (click)="salvarComentario()">
+            <button *ngIf="eVisualizacao" class="pure-button fuller-button yellow" (click)="salvarComentario(); frameNovo.hide()">
               SALVAR COMENTARIO <mdb-icon fas icon="far fa-check-circle"></mdb-icon>
             </button>
           </div>

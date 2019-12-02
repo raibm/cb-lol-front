@@ -118,9 +118,15 @@ export class PrincipalComponent implements OnInit {
 
   salvar() {
     this.composicao.id_owner = this.globalService.obterUsuarioLogado().id;
-    this.composicaoService.createComposicoes(this.composicao).subscribe(() => {
-      this.carregarComposicoes();
-    });
+    if(this.composicao.id){
+      this.composicaoService.updateComposicao(this.composicao).subscribe(() => {
+        this.carregarComposicoes();
+      });
+    } else {
+      this.composicaoService.createComposicoes(this.composicao).subscribe(() => {
+        this.carregarComposicoes();
+      });
+    }
     this.limpar();
   }
 
@@ -160,6 +166,14 @@ export class PrincipalComponent implements OnInit {
     this.preencherValoresVisualizacao();
   }
 
+  editarComposicao(comp: Composicao){
+    this.limpar();
+    this.composicao = comp;
+    this.eVisualizacao = false;
+    this.campeaoAdc = this.composicao.adc_champion;
+    this.preencherValoresVisualizacao();
+  }
+
   preencherValoresVisualizacao() {
     this.campeaoTop = this.campeoes.find(campeao => {
       return campeao.value === this.composicao.top_champion;
@@ -177,7 +191,10 @@ export class PrincipalComponent implements OnInit {
       return campeao.value === this.composicao.sup_champion;
     });
     this.comentarios = this.composicao.comment;
-    this.obterUsuarioComentario();
+
+    if(this.eVisualizacao){
+      this.obterUsuarioComentario();
+    }
   }
 
   obterUsuarioComentario() {
@@ -202,6 +219,7 @@ export class PrincipalComponent implements OnInit {
     let comentario = new Comentario();
     comentario.id_composition = this.composicao.id;
     comentario.id_owner = this.globalService.obterUsuarioLogado().id;
+    comentario.user = this.globalService.obterUsuarioLogado();
     this.comentarios.push(comentario);
   }
 
@@ -210,9 +228,15 @@ export class PrincipalComponent implements OnInit {
     this.comentarios.forEach(comentario => {
       if (!comentario.id) {
         this.comentarioService.createComentario(comentario).subscribe(comentario => {
+          this.composicaoService.getComposicoes().subscribe(composicoes => {
+            this.composicoes = composicoes;
+          });
         });
       } else {
         this.comentarioService.updateComentario(comentario).subscribe(comentario => {
+          this.composicaoService.getComposicoes().subscribe(composicoes => {
+            this.composicoes = composicoes;
+          });
         });
       }
     });
@@ -226,13 +250,36 @@ export class PrincipalComponent implements OnInit {
     return true;
   }
 
+  desabilitarExclusao(composicao: Composicao){
+    if(composicao.id_owner === this.globalService.obterUsuarioLogado().id){
+      return false;
+    }
+    return true;
+  }
+
   excluirComentario(comentario: Comentario){
     this.comentarios = this.composicao.comment.filter( c => {
       return c.id !== comentario.id;
     })
     this.composicao.comment = this.comentarios;
     this.comentarioService.deleteComentario(comentario).subscribe(() => {
-      console.log("deletado o comentário");
+      this.comentarioService.getComentariosComposicao(this.composicao.id).subscribe(comentarios => {
+        this.composicao.comment = comentarios;
+      })
     });
   }
+
+  excluirComposicao(composicao: Composicao){
+    this.composicoes = this.composicoes.filter( c => {
+      return c.id !== composicao.id_owner;
+    });
+
+    this.composicaoService.deleteComposicao(composicao).subscribe(() => {
+      this.composicaoService.getComposicoes().subscribe(composicoes => {
+        this.composicoes = composicoes;
+      });
+    });
+  }
+
+  
 }

@@ -201,3 +201,26 @@ button{
     color: red;
   }
 }
+
+#lixeira2 {
+  &:hover{
+    color: red;
+  }
+}
+
+#editar {
+  &:hover{
+    color: rgb(71, 161, 29);
+  }
+}
+
+#visualizar {
+  &:hover{
+    color: mediumblue;
+  }
+}
+
+a {
+  margin: 5px;
+}
+

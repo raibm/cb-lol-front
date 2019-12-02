@@ -12,12 +12,15 @@
                 <button class="pure-button fuller-button yellow" id="btnRedeSocial" onclick="location.href='https:\\www.linkedin.com/in/rai-bizerra-maciel-6b4552155/'"><a class="fab fa-linkedin"
                        ></a></button>
             </li>
+            <li class="nav-item waves-light">
+                <button *ngIf="verificarUsuarioLogado()" class="pure-button fuller-button yellow" id="btnRedeSocial" (click)="deslogar()"><a class="fas fa-backspace"
+                       >DESLOGAR</a></button>
+            </li>
         </ul>
         <ul class="navbar-nav mr-auto">
             <li class="nav-item waves-light" mdbWavesEffect>
-                <button class="pure-button fuller-button yellow" (click)="navegarParaSobre()">
-                    <mdb-icon fas icon="book-open"></mdb-icon>
-                </button>
+                <img id="iconeUsuarioLogado" [src]="definirAvatarInvocador()" class="rounded mx-auto d-block" alt="...">
+                <a id="nomeUsuario">{{ definirUsuarioLogado() }}</a>
             </li>
         </ul>
     </mdb-navbar>
