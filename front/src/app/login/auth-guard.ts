@@ -28,11 +28,13 @@ export class AuthGuard implements CanActivate {
   }
 
   async fazerLogin(usuario: Perfil) {
-    this.blockUI.start("Carregando...")
 
     if (this.verificarUsuarioAtual()) {
       await this.usuarioService.verificarLogin(usuario).subscribe(usuarioLogado => {
         if (usuarioLogado) {
+
+          alert('Bem vindo(a) '+usuarioLogado.login+'!');
+
           this.usuarioAutenticado = true;
 
           this.mostrarMenuEmitter.emit(true);
@@ -44,16 +46,14 @@ export class AuthGuard implements CanActivate {
           this.route.navigate(['/principal']);
 
         } else {
+
           this.usuarioAutenticado = false;
 
           this.mostrarMenuEmitter.emit(false);
 
           this.route.navigate(['/login']);
-
         }
       });
-
-      this.blockUI.stop();
     }
 
   }

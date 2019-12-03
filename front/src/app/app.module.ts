@@ -18,6 +18,8 @@ import { GlobalService } from './global.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CampeoesUtil } from './principal/campeoes.util';
 import { AvatarUtil } from './principal/avatar.util';
+import { JwPaginationComponent } from 'jw-angular-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -28,7 +30,7 @@ import { AvatarUtil } from './principal/avatar.util';
     PerfilComponent,
     SobreComponent,
     PrincipalComponent,
-    
+    JwPaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +40,8 @@ import { AvatarUtil } from './principal/avatar.util';
     FormsModule,
     HttpClientModule,
     BlockUIModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxPaginationModule
   ],
   providers: [AuthGuard, GlobalService, CampeoesUtil, AvatarUtil],
   bootstrap: [AppComponent]

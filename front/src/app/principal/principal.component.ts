@@ -9,6 +9,7 @@ import { AvatarUtil } from './avatar.util';
 import { ComentarioService } from '../services/comentario.service';
 import { Comentario } from '../models/comentario.model';
 import { UsuarioService } from '../services/usuario.service';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @Component({
   selector: 'app-principal',
@@ -38,19 +39,30 @@ export class PrincipalComponent implements OnInit {
   campeaoJg: Object = new Object({ nome: 'selecione', imagem: '../../assets/invocador.png' });
   campeaoAdc: Object = new Object({ nome: 'selecione', imagem: '../../assets/invocador.png' });
   campeaoSup: Object = new Object({ nome: 'selecione', imagem: '../../assets/invocador.png' });
+  config: any;
 
   constructor(private composicaoService: ComposicaoService,
     private campeoesUtil: CampeoesUtil,
     private globalService: GlobalService,
     private avataresUtil: AvatarUtil,
     private comentarioService: ComentarioService,
-    private usuarioService: UsuarioService) { }
+    private usuarioService: UsuarioService) { 
+      this.config = {
+      itemsPerPage: 5,
+      currentPage: 1,
+      totalItems: this.composicoes.length
+    };
+    }
 
   @BlockUI() blockUI: NgBlockUI;
 
   ngOnInit() {
     this.carregarComposicoes();
     this.definirCampeoesEAvatares();
+  }
+
+  pageChanged(event){
+    this.config.currentPage = event;
   }
 
   carregarComposicoes() {
