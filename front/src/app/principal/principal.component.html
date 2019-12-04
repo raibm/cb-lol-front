@@ -12,8 +12,8 @@
           NOVA COMP <mdb-icon fas icon="users"></mdb-icon>
         </button>
         <div class="md-form">
-          <input mdbInput type="text" id="form3" class="form-control">
-          <label for="form1" class="">Buscar composição</label>
+          <input mdbInput type="text" [(ngModel)]="campoPesquisa" (keyup)="buscar($event)" id="form3" class="form-control">
+          <label for="form1" >Buscar composição</label>
         </div>
       </div>
     </div>
@@ -42,7 +42,7 @@
           </tr>
         </tbody>
       </table>
-      <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls>
+      <pagination-controls class="minha-paginacao" previousLabel="Voltar" nextLabel="Avançar" (pageChange)="pageChanged($event)"></pagination-controls>
     </div>
 
     <div mdbModal #frameNovo="mdbModal" class="modal fade left" id="frameModalTop" tabindex="-1" role="dialog"

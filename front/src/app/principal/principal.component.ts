@@ -9,7 +9,7 @@ import { AvatarUtil } from './avatar.util';
 import { ComentarioService } from '../services/comentario.service';
 import { Comentario } from '../models/comentario.model';
 import { UsuarioService } from '../services/usuario.service';
-import {NgxPaginationModule} from 'ngx-pagination';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @Component({
   selector: 'app-principal',
@@ -20,11 +20,15 @@ export class PrincipalComponent implements OnInit {
 
   composicoes: any[] = [];
 
+  composicoesOriginal: any[] = [];
+
   campeoes: any[] = [];
 
   avatares: any[] = [];
 
   eEdicao: boolean = false;
+
+  campoPesquisa: string = '';
 
   eVisualizacao: boolean = false;
 
@@ -46,13 +50,13 @@ export class PrincipalComponent implements OnInit {
     private globalService: GlobalService,
     private avataresUtil: AvatarUtil,
     private comentarioService: ComentarioService,
-    private usuarioService: UsuarioService) { 
-      this.config = {
-      itemsPerPage: 5,
+    private usuarioService: UsuarioService) {
+    this.config = {
+      itemsPerPage: 9,
       currentPage: 1,
       totalItems: this.composicoes.length
     };
-    }
+  }
 
   @BlockUI() blockUI: NgBlockUI;
 
@@ -61,7 +65,19 @@ export class PrincipalComponent implements OnInit {
     this.definirCampeoesEAvatares();
   }
 
-  pageChanged(event){
+  buscar(event) {
+    if (event.key === 'Enter') {
+      if (this.campoPesquisa === '') {
+        this.composicoes = this.composicoesOriginal;
+      } else {
+        this.composicoes = this.composicoes.filter((composicao: Composicao) => {
+          return composicao.title.toLowerCase().includes(this.campoPesquisa.toLowerCase());
+        });
+      }
+    }
+  }
+
+  pageChanged(event) {
     this.config.currentPage = event;
   }
 
@@ -69,6 +85,7 @@ export class PrincipalComponent implements OnInit {
     this.blockUI.start('Carregando...')
     this.composicaoService.getComposicoes().subscribe(composicoesEncontradas => {
       this.composicoes = composicoesEncontradas;
+      this.composicoesOriginal = composicoesEncontradas;
     });
     this.blockUI.stop();
   }
@@ -78,7 +95,7 @@ export class PrincipalComponent implements OnInit {
     this.campeoes = this.campeoesUtil.obterCampeoes();
   }
 
-  novaComp(){
+  novaComp() {
     this.eVisualizacao = false;
     this.limpar();
     this.definirCampeoesEAvatares();
@@ -130,7 +147,7 @@ export class PrincipalComponent implements OnInit {
 
   salvar() {
     this.composicao.id_owner = this.globalService.obterUsuarioLogado().id;
-    if(this.composicao.id){
+    if (this.composicao.id) {
       this.composicaoService.updateComposicao(this.composicao).subscribe(() => {
         this.carregarComposicoes();
       });
@@ -178,7 +195,7 @@ export class PrincipalComponent implements OnInit {
     this.preencherValoresVisualizacao();
   }
 
-  editarComposicao(comp: Composicao){
+  editarComposicao(comp: Composicao) {
     this.limpar();
     this.composicao = comp;
     this.eVisualizacao = false;
@@ -204,7 +221,7 @@ export class PrincipalComponent implements OnInit {
     });
     this.comentarios = this.composicao.comment;
 
-    if(this.eVisualizacao){
+    if (this.eVisualizacao) {
       this.obterUsuarioComentario();
     }
   }
@@ -217,8 +234,8 @@ export class PrincipalComponent implements OnInit {
     });
   }
 
-  definirAvatar(comentario: Comentario){
-    if(comentario && comentario.user){
+  definirAvatar(comentario: Comentario) {
+    if (comentario && comentario.user) {
       let urlAvatar = this.avatares.find(avatar => {
         return avatar.value === comentario.user.avatar;
       });
@@ -242,11 +259,13 @@ export class PrincipalComponent implements OnInit {
         this.comentarioService.createComentario(comentario).subscribe(comentario => {
           this.composicaoService.getComposicoes().subscribe(composicoes => {
             this.composicoes = composicoes;
+            this.composicoesOriginal = composicoes;
           });
         });
       } else {
         this.comentarioService.updateComentario(comentario).subscribe(comentario => {
           this.composicaoService.getComposicoes().subscribe(composicoes => {
+            this.composicoes = composicoes;
             this.composicoes = composicoes;
           });
         });
@@ -255,22 +274,22 @@ export class PrincipalComponent implements OnInit {
     this.blockUI.stop();
   }
 
-  desabilitarEdicao(comentario: Comentario){
-    if(comentario.id_owner === this.globalService.obterUsuarioLogado().id){
+  desabilitarEdicao(comentario: Comentario) {
+    if (comentario.id_owner === this.globalService.obterUsuarioLogado().id) {
       return false;
     }
     return true;
   }
 
-  desabilitarExclusao(composicao: Composicao){
-    if(composicao.id_owner === this.globalService.obterUsuarioLogado().id){
+  desabilitarExclusao(composicao: Composicao) {
+    if (composicao.id_owner === this.globalService.obterUsuarioLogado().id) {
       return false;
     }
     return true;
   }
 
-  excluirComentario(comentario: Comentario){
-    this.comentarios = this.composicao.comment.filter( c => {
+  excluirComentario(comentario: Comentario) {
+    this.comentarios = this.composicao.comment.filter(c => {
       return c.id !== comentario.id;
     })
     this.composicao.comment = this.comentarios;
@@ -281,17 +300,20 @@ export class PrincipalComponent implements OnInit {
     });
   }
 
-  excluirComposicao(composicao: Composicao){
-    this.composicoes = this.composicoes.filter( c => {
+  excluirComposicao(composicao: Composicao) {
+    this.composicoes = this.composicoes.filter(c => {
       return c.id !== composicao.id_owner;
     });
+
+    this.composicoesOriginal = this.composicoes;
 
     this.composicaoService.deleteComposicao(composicao).subscribe(() => {
       this.composicaoService.getComposicoes().subscribe(composicoes => {
         this.composicoes = composicoes;
+        this.composicoesOriginal = composicoes;
       });
     });
   }
 
-  
+
 }
